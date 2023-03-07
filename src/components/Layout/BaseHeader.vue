@@ -11,7 +11,7 @@
 
 <script setup>
   import VImg from '../UI/Img/VImg.vue';
-  import logo from '../Image/logo.png';
+  import logo from '@/assets/logo.png';
 </script>
 
 <style lang="scss" scoped>

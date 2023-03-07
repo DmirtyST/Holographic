@@ -8,17 +8,11 @@
         </div>
 
         <ul class="abstractions_item">
-          <li class="abstractions_img">
-            <VImg :sourse="abstractions1" ps="contain" />
-          </li>
-          <li class="abstractions_img">
-            <VImg :sourse="abstractions2" ps="contain" />
-          </li>
-          <li class="abstractions_img">
-            <VImg :sourse="abstractions3" ps="contain" />
-          </li>
-          <li class="abstractions_img">
-            <VImg :sourse="abstractions4" ps="contain" />
+          <li v-for="item in dataImages" :key="item.id" class="abstractions_img">
+            <picture>
+              <source :srcset="item.pathSrcset" type="image/webp" />
+              <VImg :sourse="item.pathSrc" ps="contain" />
+            </picture>
           </li>
         </ul>
       </div>
@@ -38,15 +32,24 @@
   import {gsap} from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   import {onMounted} from 'vue';
-  import abstractions1 from '../Image/abstractions1.png';
-  import abstractions2 from '../Image/abstractions2.png';
-  import abstractions3 from '../Image/abstractions3.png';
-  import abstractions4 from '../Image/abstractions4.png';
-  import VHtag from '../UI/Htag/VHtag.vue';
-  import VImg from '../UI/Img/VImg.vue';
+  import abstractions1 from '@/assest/abstractions1.png';
+  import abstractions2 from '@/assets/abstractions2.png';
+  import abstractions3 from '@/assets/abstractions3.png';
+  import abstractions4 from '@/assets/abstractions4.png';
+  import abstractions1Webp from '@/assets/abstractions1.webp';
+  import abstractions2Webp from '@/assets/abstractions2.webp';
+  import abstractions3Webp from '@/assets/abstractions3.webp';
+  import abstractions4Webp from '@/assets/abstractions4.webp';
+  import VHtag from '@comps/UI/Htag/VHtag.vue';
+  import VImg from '@comps/UI/Img/VImg.vue';
   gsap.registerPlugin(ScrollTrigger);
   let mm = gsap.matchMedia();
-
+  const dataImages = [
+    {id: 1, pathSrc: abstractions1, pathSrcset: abstractions1Webp},
+    {id: 1, pathSrc: abstractions2, pathSrcset: abstractions2Webp},
+    {id: 1, pathSrc: abstractions3, pathSrcset: abstractions3Webp},
+    {id: 1, pathSrc: abstractions4, pathSrcset: abstractions4Webp},
+  ];
   onMounted(() => {
     mm.add('(min-width:1024px)', () => {
       gsap.to('.abstractions_img:nth-child(4)', {

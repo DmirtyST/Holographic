@@ -10,7 +10,7 @@
           </div>
           <div class="footer_item">
             <ul class="footer_lists">
-              <div class="footer_title">Products</div>
+              <li><div class="footer_title">Products</div></li>
               <li class="footer_list">Characters</li>
               <li class="footer_list">Abstract</li>
               <li class="footer_list">Themes</li>
@@ -19,7 +19,7 @@
               <li class="footer_list">Pro Access</li>
             </ul>
             <ul class="footer_lists">
-              <div class="footer_title">Info</div>
+              <li><div class="footer_title">Info</div></li>
               <li class="footer_list">License</li>
               <li class="footer_list">Use cases</li>
               <li class="footer_list">Order custom</li>
@@ -43,7 +43,7 @@
 <script setup>
   import VContainer from '../UI/Container/VContainer.vue';
   import VImg from '../UI/Img/VImg.vue';
-  import logoFooter from '../Image/logoFooter.png';
+  import logoFooter from '@/assets/logoFooter.png';
   import VSvg from '../UI/SVG/VSvg.vue';
 </script>
 

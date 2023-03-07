@@ -6,7 +6,7 @@
 
 <script setup>
   import VImg from '../Img/VImg.vue';
-  import rotate from '../../Image/benefist_rotate.png';
+  import rotate from '@/assets/benefist_rotate.png';
 </script>
 
 <style lang="scss" scoped>

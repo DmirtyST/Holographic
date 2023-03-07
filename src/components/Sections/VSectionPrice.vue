@@ -4,7 +4,10 @@
       <div class="price_content">
         <div class="price_item">
           <div class="price_img">
-            <VImg :sourse="priceCenter" ps="contain" />
+            <picture>
+              <source :srcset="priceCenterWebp" type="image/webp" />
+              <VImg :sourse="priceCenter" ps="contain" />
+            </picture>
           </div>
           <div class="price_title">
             <VHtag tag="h3" size="xl"> Get Full Glossy set</VHtag>
@@ -24,12 +27,13 @@
 </template>
 
 <script setup>
-  import VImg from '../UI/Img/VImg.vue';
-  import priceCenter from '../Image/priceCenter.png';
+  import VImg from '@comps/UI/Img/VImg.vue';
+  import priceCenter from '@/assets/priceCenter.png';
+  import priceCenterWebp from '@/assets/priceCenter.webp';
   import {gsap} from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   import {onMounted} from 'vue';
-  import VHtag from '../UI/Htag/VHtag.vue';
+  import VHtag from '@comps/UI/Htag/VHtag.vue';
   gsap.registerPlugin(ScrollTrigger);
   onMounted(() => {
     let mm = gsap.matchMedia();

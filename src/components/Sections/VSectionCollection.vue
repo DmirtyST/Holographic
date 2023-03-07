@@ -16,55 +16,55 @@
       <div class="collection_item">
         <div class="collection_number">1</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection1" />
+          <VImg ps="contain" :set="collectionWebp1" :sourse="collection1" />
         </div>
       </div>
       <div class="collection_item">
         <div class="collection_number">2</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection2" />
+          <VImg ps="contain" :set="collectionWebp2" :sourse="collection2" />
         </div>
       </div>
       <div class="collection_item">
         <div class="collection_number">3</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection3" />
+          <VImg ps="contain" :set="collectionWebp3" :sourse="collection3" />
         </div>
       </div>
       <div class="collection_item">
         <div class="collection_number">4</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection4" />
+          <VImg ps="contain" :set="collectionWebp4" :sourse="collection4" />
         </div>
       </div>
       <div class="collection_item">
         <div class="collection_number">5</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection5" />
+          <VImg ps="contain" :set="collectionWebp5" :sourse="collection5" />
         </div>
       </div>
       <div class="collection_item">
         <div class="collection_number">6</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection6" />
+          <VImg ps="contain" :set="collectionWebp4" :sourse="collection4" />
         </div>
       </div>
       <div class="collection_item">
         <div class="collection_number">7</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection7" />
+          <VImg ps="contain" :set="collectionWebp7" :sourse="collection7" />
         </div>
       </div>
       <div class="collection_item">
         <div class="collection_number">8</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection8" />
+          <VImg ps="contain" :set="collectionWebp8" :sourse="collection8" />
         </div>
       </div>
       <div class="collection_item">
         <div class="collection_number">9</div>
         <div class="collection_img">
-          <VImg ps="contain" :sourse="collection9" />
+          <VImg ps="contain" :set="collectionWebp9" :sourse="collection9" />
         </div>
       </div>
     </div>
@@ -72,18 +72,25 @@
 </template>
 
 <script setup>
-  import collection1 from '../Image/collection1.png';
-  import collection2 from '../Image/collection2.png';
-  import collection3 from '../Image/collection3.png';
-  import collection4 from '../Image/collection4.png';
-  import collection5 from '../Image/collection5.png';
-  import collection6 from '../Image/collection6.png';
-  import collection7 from '../Image/collection7.png';
-  import collection8 from '../Image/collection8.png';
-  import collection9 from '../Image/collection9.png';
-  import VImg from '../UI/Img/VImg.vue';
-  import VHtag from '../UI/Htag/VHtag.vue';
-  import VTypography from '../UI/Typography/VTypography.vue';
+  import collection1 from '@/assets/collection1.png';
+  import collection2 from '@/assets/collection2.png';
+  import collection3 from '@/assets/collection3.png';
+  import collection4 from '@/assets/collection4.png';
+  import collection5 from '@/assets/collection5.png';
+  import collection7 from '@/assets/collection7.png';
+  import collection8 from '@/assets/collection8.png';
+  import collection9 from '@/assets/collection9.png';
+  import collectionWebp1 from '@/assets/collection1.webp';
+  import collectionWebp2 from '@/assets/collection2.webp';
+  import collectionWebp3 from '@/assets/collection3.webp';
+  import collectionWebp4 from '@/assets/collection4.webp';
+  import collectionWebp5 from '@/assets/collection5.webp';
+  import collectionWebp7 from '@/assets/collection7.webp';
+  import collectionWebp8 from '@/assets/collection8.webp';
+  import collectionWebp9 from '@/assets/collection9.webp';
+  import VImg from '@comps/UI/Img/VImg.vue';
+  import VHtag from '@comps/UI/Htag/VHtag.vue';
+  import VTypography from '@comps/UI/Typography/VTypography.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -148,7 +155,7 @@
       }
       &:nth-child(6) {
         transform: translate(63rem, -35rem);
-        @include size(53rem,53rem);
+        @include size(53rem, 53rem);
         z-index: 6;
       }
       &:nth-child(7) {
@@ -160,8 +167,7 @@
       &:nth-child(8) {
         transform: translate(93rem, -44rem);
         z-index: 22;
-        @include size(50rem,53rem);
-        
+        @include size(50rem, 53rem);
       }
       &:last-child {
         transform: translate(15.5rem, 12rem);
@@ -175,10 +181,10 @@
       z-index: -1;
     }
     &_title {
-      @include size(70rem,'');
+      @include size(70rem, '');
     }
     &_number {
-      @include font(1.4rem,2rem,0,400);
+      @include font(1.4rem, 2rem, 0, 400);
       color: $white;
       top: 2.3rem;
       left: 2.1rem;
@@ -186,7 +192,7 @@
       z-index: 22;
     }
     &_text {
-      @include size(30rem,'')
+      @include size(30rem, '');
     }
   }
 
@@ -204,7 +210,7 @@
         display: none;
       }
       &_title {
-        @include size(100%,'');
+        @include size(100%, '');
       }
       &_row {
         min-height: 200vh;
@@ -227,11 +233,10 @@
         &:nth-child(7),
         &:nth-child(8),
         &:last-child {
-          @include size(100%,100%);
+          @include size(100%, 100%);
           transform: translate(-0rem, 0rem);
           box-shadow: none;
           padding: 1.5rem 1.5rem;
-         
         }
       }
       &_number {
@@ -261,9 +266,8 @@
         &:nth-child(7),
         &:nth-child(8),
         &:last-child {
-          @include size('',33rem);
+          @include size('', 33rem);
           padding: 4.5rem 4.5rem;
-
         }
       }
     }

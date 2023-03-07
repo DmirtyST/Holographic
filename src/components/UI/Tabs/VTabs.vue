@@ -68,7 +68,7 @@
 
     &_list {
       @include font(2.4rem, 2.4rem, -0.800000011920929px, 400);
-      opacity: 0.2;
+      opacity: 0.4;
       transition: all ease 0.4s;
       cursor: pointer;
       &.selected {

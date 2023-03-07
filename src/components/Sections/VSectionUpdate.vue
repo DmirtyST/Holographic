@@ -11,14 +11,17 @@
           </div>
           <div class="update_left">
             <picture>
-              <source media="(max-width: 568px)" :srcset="updateLeftSm" />
+              <source :srcset="updateLeftWebp" type="image/webp" />
               <VImg :sourse="updateLeft" ps="contain" />
             </picture>
           </div>
         </div>
         <div class="update_item">
           <div class="update_right">
-            <VImg :sourse="updateRight" ps="contain" />
+            <picture>
+              <source :srcset="updateRightWebp" type="image/webp" />
+              <VImg :sourse="updateRight" ps="contain" />
+            </picture>
           </div>
         </div>
       </div>
@@ -26,7 +29,10 @@
     <div class="update_bottom">
       <div class="update-bottom_content">
         <div class="update-bottom_img">
-          <VImg :sourse="updateBox" ps="contain" />
+          <picture>
+            <source :srcset="updateBoxWebp" type="image/webp" />
+            <VImg :sourse="updateBox" ps="contain" />
+          </picture>
         </div>
         <div class="update-bottom_item">
           <p class="update-bottom_text">
@@ -48,16 +54,18 @@
 </template>
 
 <script setup>
-  import VImg from '../UI/Img/VImg.vue';
-  import updateRight from '../Image/updateRight.png';
-  import updateLeft from '../Image/updateLeft.png';
-  import updateLeftSm from '../Image/updateLeftSm.png';
-  import updateBox from '../Image/updateBox.png';
+  import VImg from '@comps/UI/Img/VImg.vue';
+  import updateRight from '@/assets/updateRight.png';
+  import updateLeft from '@/assets/updateLeft.png';
+  import updateBox from '@/assets/updateBox.png';
+  import updateRightWebp from '@/assets/updateright.webp';
+  import updateLeftWebp from '@/assets/updateleft.webp';
+  import updateBoxWebp from '@/assets/updateBox.webp';
   import {gsap} from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   import {onMounted} from 'vue';
-  import VHtag from '../UI/Htag/VHtag.vue';
-  import VTypography from '../UI/Typography/VTypography.vue';
+  import VHtag from '@comps/UI/Htag/VHtag.vue';
+  import VTypography from '@comps/UI/Typography/VTypography.vue';
   gsap.registerPlugin(ScrollTrigger);
   onMounted(() => {
     let mm = gsap.matchMedia();

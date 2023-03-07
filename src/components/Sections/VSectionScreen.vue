@@ -1,6 +1,9 @@
 <template>
   <div class="screen">
-    <img :src="bgScreen" />
+    <picture>
+      <source :srcset="bgScreenWebp" type="image/webp" />
+      <img :src="bgScreen" alt="bg" />
+    </picture>
     <div class="screen_row">
       <div class="screen_content">
         <div class="screen_item">
@@ -18,24 +21,21 @@
               stunning.</VTypography
             >
           </div>
-          <a href="#abs">
-            <VSvg class="screen_icon" id="arrow-down" width="2.6rem" height="3.7rem" />
-          </a>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-  import bgScreen from '../Image/bg-screen.png';
-  import VHtag from '../UI/Htag/VHtag.vue';
-  import VSvg from '../UI/SVG/VSvg.vue';
-  import VTypography from '../UI/Typography/VTypography.vue';
+  import bgScreen from '@/assets/bg-screen.png';
+  import bgScreenWebp from '@/assets/bg-screen.webp';
+  import VHtag from '@comps/UI/Htag/VHtag.vue';
+  import VTypography from '@comps/UI/Typography/VTypography.vue';
 </script>
 
 <style lang="scss" scoped>
   .screen {
-    height: 120vh;
+    height: 125vh;
     position: relative;
     z-index: 1;
     background-image: $pureLinear;
@@ -69,6 +69,10 @@
     }
     &_item {
       text-align: center;
+      &:last-child {
+        position: relative;
+        top: 10rem;
+      }
     }
     &_sub {
       margin-bottom: 3.2rem;

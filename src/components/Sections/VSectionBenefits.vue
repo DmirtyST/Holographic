@@ -3,7 +3,10 @@
     <div class="benefits_row">
       <div class="benefits_content">
         <div class="benefits_image">
-          <VImg :sourse="benefistCenter" ps="contain" />
+          <picture>
+            <source :srcset="benefistCenterWebp" type="image/webp" />
+            <VImg :sourse="benefistCenter" ps="contain" />
+          </picture>
         </div>
         <div class="benefits_item">
           <div class="benefits_rotate">
@@ -25,14 +28,15 @@
 </template>
 
 <script setup>
-  import VImg from '../UI/Img/VImg.vue';
-  import benefistCenter from '../Image/benefist_center.png';
+  import VImg from '@comps/UI/Img/VImg.vue';
+  import benefistCenter from '@/assets/benefist_center.png';
+  import benefistCenterWebp from '@/assets/benefist-center.webp';
   import {gsap} from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   import {onMounted} from 'vue';
-  import ACircling from '../UI/Animation/ACircling.vue';
-  import VHtag from '../UI/Htag/VHtag.vue';
-  import VTypography from '../UI/Typography/VTypography.vue';
+  import ACircling from '@comps/UI/Animation/ACircling.vue';
+  import VHtag from '@comps/UI/Htag/VHtag.vue';
+  import VTypography from '@comps/UI/Typography/VTypography.vue';
   gsap.registerPlugin(ScrollTrigger);
   onMounted(() => {
     gsap.to('.benefits_image', {
@@ -74,13 +78,12 @@
       text-align: center;
     }
     &_rotate {
-      @include flex(row,center);
-      
+      @include flex(row, center);
     }
 
     &_content {
-      @include size('',100vh);
-      @include flex(row,center,center);
+      @include size('', 100vh);
+      @include flex(row, center, center);
       position: sticky;
       top: 0;
       overflow: hidden;
@@ -91,17 +94,14 @@
       padding-top: 0rem;
       padding: 0 1.5rem;
       &_row {
-        @include size('',55rem);
-
+        @include size('', 55rem);
       }
       &_content {
-        @include size('',100%);
-
-
+        @include size('', 100%);
       }
 
       &_image {
-        @include size(45rem,45rem);
+        @include size(45rem, 45rem);
         position: absolute;
         left: 50%;
         top: 10%;
@@ -115,12 +115,11 @@
     .benefits {
       padding-top: 0rem;
       &_row {
-        @include size('',40rem);
+        @include size('', 40rem);
       }
-      
 
       &_image {
-        @include size(35rem,35rem);
+        @include size(35rem, 35rem);
         position: absolute;
         left: 50%;
         top: 10%;

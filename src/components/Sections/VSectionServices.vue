@@ -22,9 +22,9 @@
 </template>
 
 <script setup>
-  import VContainer from '../UI/Container/VContainer.vue';
-  import ACircling from '../UI/Animation/ACircling.vue';
-  import VHtag from '../UI/Htag/VHtag.vue';
+  import VContainer from '@comps/UI/Container/VContainer.vue';
+  import ACircling from '@comps/UI/Animation/ACircling.vue';
+  import VHtag from '@comps/UI/Htag/VHtag.vue';
 </script>
 
 <style lang="scss" scoped>

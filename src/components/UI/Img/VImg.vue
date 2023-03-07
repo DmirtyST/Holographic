@@ -1,5 +1,5 @@
 <template>
-  <img :class="['img', `img_${ps}`]" :src="sourse" alt="img" />
+  <img :class="['img', `img_${ps}`]" :srcset="set" :src="sourse" alt="img" />
 </template>
 
 <script setup>
@@ -9,6 +9,10 @@
       default: '',
     },
     sourse: {
+      type: String,
+      default: '',
+    },
+    set: {
       type: String,
       default: '',
     },

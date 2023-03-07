@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/inter": "^4.5.15",
     "@vuetify/vite-plugin": "^1.0.0-alpha.11",
     "gsap": "^3.11.4",
-    "gsap-bonus.tgz": "./gsap-bonus.tgz",
     "sass": "^1.55.0",
     "swiper": "^8.4.4",
     "vue": "^3.2.41",
