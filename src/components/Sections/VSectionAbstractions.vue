@@ -32,7 +32,7 @@
   import {gsap} from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   import {onMounted} from 'vue';
-  import abstractions1 from '@/assest/abstractions1.png';
+  import abstractions1 from '@/assets/abstractions1.png';
   import abstractions2 from '@/assets/abstractions2.png';
   import abstractions3 from '@/assets/abstractions3.png';
   import abstractions4 from '@/assets/abstractions4.png';
