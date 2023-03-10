@@ -47,6 +47,7 @@
 <script setup>
   import VTabs from '@comps/UI/Tabs/VTabs.vue';
   import {ref} from 'vue';
+
   import VContainer from '@comps/UI/Container/VContainer.vue';
   import gallery1 from '@/assets/gallery1.png';
   import gallery2 from '@/assets/gallery2.png';
@@ -97,13 +98,13 @@
     {src: gallery14, set: galleryWebp14},
     {src: gallery15, set: galleryWebp15},
   ];
-  const itemDataWebp = [];
   const tabsData = [
     {id: 1, label: 'Iridescent'},
     {id: 2, label: 'Black Holographic'},
     {id: 3, label: 'Holographic'},
     {id: 4, label: 'Glass'},
   ];
+
   const selectedTab = ref(1);
   const changeTab = (tabId) => {
     selectedTab.value = tabId;

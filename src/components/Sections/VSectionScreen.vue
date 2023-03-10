@@ -1,9 +1,10 @@
 <template>
   <div class="screen">
-    <picture>
-      <source :srcset="bgScreenWebp" type="image/webp" />
-      <img :src="bgScreen" alt="bg" />
-    </picture>
+    <UiVideo>
+      <source class="screen_video" v-if="isTablet" src="@/assets/screenVideo.mp4" />
+      <source class="screen_video" v-if="isMobile" src="@/assets/screenVideoSm.mp4" />
+    </UiVideo>
+
     <div class="screen_row">
       <div class="screen_content">
         <div class="screen_item">
@@ -27,31 +28,36 @@
   </div>
 </template>
 <script setup>
-  import bgScreen from '@/assets/bg-screen.png';
-  import bgScreenWebp from '@/assets/bg-screen.webp';
   import VHtag from '@comps/UI/Htag/VHtag.vue';
   import VTypography from '@comps/UI/Typography/VTypography.vue';
+  import {defineAsyncComponent, onMounted} from 'vue';
+  import {useMedia} from '@/MatchMedia/UseMedia';
+  const UiVideo = defineAsyncComponent({
+    loader: () => import('../UI/Video/UiVideo.vue'),
+  });
+  const isMobile = useMedia('(max-width: 568px)');
+  const isTablet = useMedia('(min-width: 568px)');
+  onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
   .screen {
-    height: 125vh;
+    height: 122vh;
     position: relative;
     z-index: 1;
-    background-image: $pureLinear;
     overflow: hidden;
-    img {
+    &::before {
+      content: '';
       position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      vertical-align: middle;
-      display: inline-block;
-      will-change: transform;
-      transform: translate3d(0rem, 0rem, 0rem) scale3d(1.3, 1.26666, 1) rotateX(35deg)
-        rotateY(0deg) rotateZ(0deg) skew(0deg);
-      transform-style: preserve-3d;
-      object-fit: cover;
-      z-index: -1;
+      background-color: rgba(rgb(0, 0, 0), 0.5);
+      z-index: 1;
+    }
+    &_video {
+      mix-blend-mode: difference;
     }
     &_row {
       position: relative;
@@ -127,7 +133,9 @@
   @include media('max', 'sm') {
     .screen {
       @include size(100%, 60rem);
-
+      &_videoXl {
+        display: none;
+      }
       &_title {
         @include size(20rem, '');
       }

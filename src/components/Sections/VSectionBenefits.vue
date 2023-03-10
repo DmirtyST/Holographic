@@ -38,17 +38,33 @@
   import VHtag from '@comps/UI/Htag/VHtag.vue';
   import VTypography from '@comps/UI/Typography/VTypography.vue';
   gsap.registerPlugin(ScrollTrigger);
+  let mm = gsap.matchMedia();
   onMounted(() => {
-    gsap.to('.benefits_image', {
-      scale: 1,
-      ease: '.7s',
-      opacity: 1,
-      duration: 1,
-      scrollTrigger: {
-        trigger: '.benefits_content',
-        toggleActions: 'restart none none reverse',
-        start: 'top 40%',
-      },
+    mm.add('(min-width:568px)', () => {
+      gsap.to('.benefits_image', {
+        scale: 1,
+        ease: '.7s',
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.benefits_content',
+          toggleActions: 'restart none none reverse',
+          start: 'top 40%',
+        },
+      });
+    });
+    mm.add('(max-width:568px)', () => {
+      gsap.to('.benefits_image', {
+        scale: 1,
+        ease: '.7s',
+        opacity: 1,
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.benefits_content',
+          start: 'top 40%',
+          once: true,
+        },
+      });
     });
   });
 </script>

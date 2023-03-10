@@ -31,7 +31,6 @@
 <script setup>
   import {gsap} from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
-  import {onMounted} from 'vue';
   import abstractions1 from '@/assets/abstractions1.png';
   import abstractions2 from '@/assets/abstractions2.png';
   import abstractions3 from '@/assets/abstractions3.png';
@@ -50,6 +49,7 @@
     {id: 1, pathSrc: abstractions3, pathSrcset: abstractions3Webp},
     {id: 1, pathSrc: abstractions4, pathSrcset: abstractions4Webp},
   ];
+
   onMounted(() => {
     mm.add('(min-width:1024px)', () => {
       gsap.to('.abstractions_img:nth-child(4)', {
@@ -101,6 +101,36 @@
       tl.to('.abstractions_title', {
         duration: 2,
         opacity: 0,
+      });
+    });
+    mm.add('(max-width:568px)', () => {
+      let dur = 1;
+      ScrollTrigger.create({
+        trigger: '.abstractions_row',
+        start: 'top center',
+        onEnter: () => {
+          gsap.fromTo(
+            '.abstractions_img:nth-child(4)',
+            {xPercent: -55, opacity: 0},
+            {xPercent: -15, duration: dur, opacity: 1},
+          );
+          gsap.fromTo(
+            '.abstractions_img:nth-child(3)',
+            {xPercent: -25, opacity: 0},
+            {xPercent: -10, duration: dur, opacity: 1},
+          );
+          gsap.fromTo(
+            '.abstractions_img:nth-child(2)',
+            {xPercent: 5, opacity: 0},
+            {xPercent: 0, duration: dur, opacity: 1},
+          );
+          gsap.fromTo(
+            '.abstractions_img:nth-child(1)',
+            {xPercent: 36, opacity: 0},
+            {xPercent: 10, duration: dur, opacity: 1},
+          );
+        },
+        once: true,
       });
     });
   });
@@ -212,16 +242,16 @@
         top: 0;
         z-index: -1;
         &:nth-child(4) {
-          left: 27rem !important;
+          left: 18rem !important;
         }
         &:nth-child(3) {
-          left: 12rem !important;
+          left: 9rem !important;
         }
         &:nth-child(2) {
-          left: -3rem !important;
+          left: 0.3rem !important;
         }
         &:nth-child(1) {
-          left: -18rem !important;
+          left: -10rem !important;
         }
         img {
           left: 0;
@@ -258,18 +288,7 @@
         transform: translateX(-45%);
         top: 0;
         z-index: -1;
-        &:nth-child(4) {
-          left: 18rem !important;
-        }
-        &:nth-child(3) {
-          left: 9rem !important;
-        }
-        &:nth-child(2) {
-          left: 0.3rem !important;
-        }
-        &:nth-child(1) {
-          left: -10rem !important;
-        }
+        opacity: 0;
         img {
           left: 0;
           top: 0;

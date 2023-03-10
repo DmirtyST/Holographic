@@ -72,6 +72,9 @@
 </template>
 
 <script setup>
+  import {gsap} from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+  import {onMounted} from 'vue';
   import collection1 from '@/assets/collection1.png';
   import collection2 from '@/assets/collection2.png';
   import collection3 from '@/assets/collection3.png';
@@ -91,6 +94,48 @@
   import VImg from '@comps/UI/Img/VImg.vue';
   import VHtag from '@comps/UI/Htag/VHtag.vue';
   import VTypography from '@comps/UI/Typography/VTypography.vue';
+  gsap.registerPlugin(ScrollTrigger);
+  onMounted(() => {
+    const items = gsap.utils.toArray('.collection_item');
+    let mm = gsap.matchMedia();
+    mm.add('(min-width:568px)', () => {
+      items.forEach((item) => {
+        gsap.fromTo(
+          item,
+          {opacity: 0},
+          {
+            opacity: 1,
+            duration: 1,
+
+            scrollTrigger: {
+              trigger: item,
+              start: 'top center',
+              toggleActions: 'restart none reverse reverse',
+            },
+          },
+        );
+      });
+    });
+    mm.add('(max-width:568px)', () => {
+      items.forEach((item) => {
+        gsap.fromTo(
+          item,
+          {opacity: 0},
+          {
+            opacity: 1,
+            duration: 1,
+
+            scrollTrigger: {
+              trigger: item,
+              start: 'top center',
+              toggleActions: 'restart none reverse reverse',
+              once: true,
+            },
+          },
+        );
+      });
+    });
+  });
 </script>
 
 <style lang="scss" scoped>
