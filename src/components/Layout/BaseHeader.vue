@@ -18,7 +18,7 @@
   .header {
     position: absolute;
     width: 100%;
-    z-index: 9999;
+    z-index: 888;
     left: 0;
     top: 0;
     &_row {
