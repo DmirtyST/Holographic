@@ -4,41 +4,73 @@
       <div class="gallery_title">
         <VHtag size="xl" tag="h3">PREVIEW OF 80 IMAGES</VHtag>
       </div>
-      <VTabs @changeTab="changeTab" :tabsData="tabsData" :selectedTab="selectedTab">
-        <VContainer width="130rem">
-          <div
-            :class="selectedTab === 1 ? 'gallery_content first' : 'gallery_content'"
-            v-if="selectedTab === 1"
-          >
-            <div v-for="item in itemData" :key="item" class="gallery_item">
-              <VImg :set="item.set" :sourse="item.src" ps="cover" />
-            </div>
-          </div>
-          <div
-            :class="selectedTab === 2 ? 'gallery_content two' : 'gallery_content'"
-            v-if="selectedTab === 2"
-          >
-            <div v-for="item in itemData" :key="item" class="gallery_item">
-              <VImg :set="item.set" :sourse="item.src" ps="cover" />
-            </div>
-          </div>
-          <div
-            :class="selectedTab === 3 ? 'gallery_content three' : 'gallery_content'"
-            v-if="selectedTab === 3"
-          >
-            <div v-for="item in itemData" :key="item" class="gallery_item">
-              <VImg :set="item.set" :sourse="item.src" ps="cover" />
-            </div>
-          </div>
-          <div
-            :class="selectedTab === 4 ? 'gallery_content last' : 'gallery_content'"
-            v-if="selectedTab === 4"
-          >
-            <div v-for="item in itemData" :key="item" class="gallery_item">
-              <VImg :set="item.set" :sourse="item.src" ps="cover" />
-            </div>
-          </div>
-        </VContainer>
+      <VTabs :tabsData="tabsData">
+        <template v-slot:content="{active}">
+          <!-- if gallery1 start -->
+          <VTabsBody v-if="active === 'gallery1'">
+            <VContainer width="130rem">
+              <div @click="toggleRect" class="gallery_content">
+                <div
+                  ref="item"
+                  v-for="item in itemData"
+                  :key="item"
+                  class="gallery_item first"
+                >
+                  <VImg :sourse="item.src" :set="item.set" />
+                </div>
+              </div>
+            </VContainer>
+          </VTabsBody>
+          <!-- if gallery1 end -->
+          <!-- if gallery2 start -->
+          <VTabsBody v-if="active === 'gallery2'">
+            <VContainer width="130rem">
+              <div @click="toggleRect" class="gallery_content">
+                <div
+                  ref="item"
+                  v-for="item in itemData"
+                  :key="item"
+                  class="gallery_item even"
+                >
+                  <VImg :sourse="item.src" :set="item.set" />
+                </div>
+              </div>
+            </VContainer>
+          </VTabsBody>
+          <!-- if gallery2 end -->
+          <!-- if gallery3 start -->
+          <VTabsBody v-if="active === 'gallery3'">
+            <VContainer width="130rem">
+              <div class="gallery_content">
+                <div
+                  ref="item"
+                  v-for="item in itemData"
+                  :key="item"
+                  class="gallery_item three"
+                >
+                  <VImg :sourse="item.src" :set="item.set" />
+                </div>
+              </div>
+            </VContainer>
+          </VTabsBody>
+          <!-- if gallery3 end -->
+          <!-- if gallery4 start -->
+          <VTabsBody v-if="active === 'gallery4'">
+            <VContainer width="130rem">
+              <div class="gallery_content">
+                <div
+                  ref="item"
+                  v-for="item in itemData"
+                  :key="item"
+                  class="gallery_item last"
+                >
+                  <VImg :sourse="item.src" :set="item.set" />
+                </div>
+              </div>
+            </VContainer>
+          </VTabsBody>
+          <!-- if gallery4 end -->
+        </template>
       </VTabs>
     </div>
   </div>
@@ -47,7 +79,6 @@
 <script setup>
   import VTabs from '@comps/UI/Tabs/VTabs.vue';
   import {ref} from 'vue';
-
   import VContainer from '@comps/UI/Container/VContainer.vue';
   import gallery1 from '@/assets/gallery1.png';
   import gallery2 from '@/assets/gallery2.png';
@@ -63,7 +94,6 @@
   import gallery12 from '@/assets/gallery12.png';
   import gallery13 from '@/assets/gallery13.png';
   import gallery14 from '@/assets/gallery14.png';
-  import gallery15 from '@/assets/gallery15.png';
   import galleryWebp1 from '@/assets/gallery1.webp';
   import galleryWebp2 from '@/assets/gallery2.webp';
   import galleryWebp3 from '@/assets/gallery3.webp';
@@ -78,9 +108,15 @@
   import galleryWebp12 from '@/assets/gallery12.webp';
   import galleryWebp13 from '@/assets/gallery13.webp';
   import galleryWebp14 from '@/assets/gallery14.webp';
-  import galleryWebp15 from '@/assets/gallery15.webp';
   import VImg from '@comps/UI/Img/VImg.vue';
   import VHtag from '@comps/UI/Htag/VHtag.vue';
+  import {gsap} from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+  import {onMounted, defineAsyncComponent} from 'vue';
+  const VTabsBody = defineAsyncComponent({
+    loader: () => import('@comps/UI/Tabs/VTabsBody.vue'),
+  });
+  gsap.registerPlugin(ScrollTrigger);
   const itemData = [
     {src: gallery1, set: galleryWebp1},
     {src: gallery2, set: galleryWebp2},
@@ -96,19 +132,29 @@
     {src: gallery12, set: galleryWebp12},
     {src: gallery13, set: galleryWebp13},
     {src: gallery14, set: galleryWebp14},
-    {src: gallery15, set: galleryWebp15},
   ];
   const tabsData = [
-    {id: 1, label: 'Iridescent'},
-    {id: 2, label: 'Black Holographic'},
-    {id: 3, label: 'Holographic'},
-    {id: 4, label: 'Glass'},
+    {id: 1, label: 'Iridescent', value: 'gallery1'},
+    {id: 2, label: 'Black Holographic', value: 'gallery2'},
+    {id: 3, label: 'Holographic', value: 'gallery3'},
+    {id: 4, label: 'Glass', value: 'gallery4'},
   ];
-
-  const selectedTab = ref(1);
-  const changeTab = (tabId) => {
-    selectedTab.value = tabId;
+  let tween;
+  const item = ref(null);
+  console.log(item);
+  const createTween = () => {
+    tween && tween.kill();
+    tween = gsap.fromTo(
+      item.value,
+      {opacity: 0},
+      {paused: true, opacity: 0, duration: 3},
+    );
   };
+  function toggleRect() {
+    tween.reversed() ? tween.play() : tween.reverse();
+    console.log('he');
+  }
+  onMounted(createTween);
 </script>
 
 <style lang="scss" scoped>
@@ -129,28 +175,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 3rem;
-
-      &.two {
-        .gallery_item {
-          img {
-            filter: hue-rotate(200deg);
-          }
-        }
-      }
-      &.three {
-        .gallery_item {
-          img {
-            filter: hue-rotate(38deg);
-          }
-        }
-      }
-      &.last {
-        .gallery_item {
-          img {
-            filter: hue-rotate(336deg);
-          }
-        }
-      }
     }
     &_item {
       @include size('', 43.333rem);
@@ -158,13 +182,38 @@
       position: relative;
       z-index: 1;
       overflow: hidden;
+      cursor: pointer;
+      img {
+        height: 105%;
+      }
+      &.even {
+        img {
+          filter: hue-rotate(300deg);
+        }
+      }
+      &.three {
+        img {
+          filter: hue-rotate(110deg) saturate(130%) contrast(90%);
+        }
+      }
+      &.last {
+        img {
+          filter: invert(230%);
+        }
+      }
     }
   }
   @include media('max', 'lg') {
     .gallery {
       &_content {
-        display: grid;
         gap: 1.5rem;
+      }
+    }
+  }
+  @include media('max', 'md') {
+    .gallery {
+      &_content {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   }

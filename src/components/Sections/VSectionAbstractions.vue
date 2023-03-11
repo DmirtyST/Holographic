@@ -103,6 +103,36 @@
         opacity: 0,
       });
     });
+    mm.add('(max-width:1024px)', () => {
+      let dur = 1;
+      ScrollTrigger.create({
+        trigger: '.abstractions_row',
+        start: 'top center',
+        onEnter: () => {
+          gsap.fromTo(
+            '.abstractions_img:nth-child(4)',
+            {xPercent: -55, opacity: 0},
+            {xPercent: 5, duration: dur, opacity: 1},
+          );
+          gsap.fromTo(
+            '.abstractions_img:nth-child(3)',
+            {xPercent: -25, opacity: 0},
+            {xPercent: -10, duration: dur, opacity: 1},
+          );
+          gsap.fromTo(
+            '.abstractions_img:nth-child(2)',
+            {xPercent: 5, opacity: 0},
+            {xPercent: -15, duration: dur, opacity: 1},
+          );
+          gsap.fromTo(
+            '.abstractions_img:nth-child(1)',
+            {xPercent: 36, opacity: 0},
+            {xPercent: -30, duration: dur, opacity: 1},
+          );
+        },
+        once: true,
+      });
+    });
     mm.add('(max-width:568px)', () => {
       let dur = 1;
       ScrollTrigger.create({
@@ -241,6 +271,7 @@
         transform: translateX(-45%);
         top: 0;
         z-index: -1;
+        opacity: 0;
         &:nth-child(4) {
           left: 18rem !important;
         }

@@ -38,18 +38,23 @@
   onMounted(() => {
     let mm = gsap.matchMedia();
     mm.add('(min-width:568px)', () => {
-      gsap.to('.price_img', {
-        ease: '.7s',
-        opacity: 1,
-        translate: '(-50% -50%)',
-        scale: 1,
-        duration: 1,
-        scrollTrigger: {
-          trigger: '.price_row',
-          toggleActions: 'restart none none reverse',
-          start: 'top 20%',
+      gsap.fromTo(
+        '.price_img',
+        {opacity: 0, scale: 0.5, rotateZ: '-29deg', rotateY: '-70deg', rotateX: '30deg'},
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 1.1,
+          rotateZ: '0deg',
+          rotateY: '0deg',
+          rotateX: '0deg',
+          scrollTrigger: {
+            trigger: '.price_row',
+            toggleActions: 'restart none none reverse',
+            start: 'top 20%',
+          },
         },
-      });
+      );
     });
   });
 </script>
@@ -78,15 +83,15 @@
       text-align: center;
       position: relative;
       z-index: 1;
+      perspective: 400rem;
     }
     &_img {
       position: absolute;
-      transform: translate(-50%, -50%) scale(0.5) rotateX(33deg);
+      transform: translate(-50%, -50%);
       top: 50%;
       left: 50%;
       @include size(120rem, 120rem);
       z-index: -1;
-      opacity: 0;
     }
 
     &_title {

@@ -25,7 +25,7 @@
         setTimeout(() => {
           isLoaded.value = true;
           document.body.style.overflowY = 'scroll';
-        }, 1300);
+        }, 1000);
       }
     };
   });
