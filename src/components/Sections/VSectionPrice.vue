@@ -29,7 +29,7 @@
 <script setup>
   import VImg from '@comps/UI/Img/VImg.vue';
   import priceCenter from '@/assets/priceCenter.png';
-  import priceCenterWebp from '@/assets/priceCenter.webp';
+  import priceCenterWebp from '@/assets/pricecenter.webp';
   import {gsap} from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   import {onMounted} from 'vue';
