@@ -1,5 +1,5 @@
 <template>
-  <div class="update">
+  <section class="update">
     <div class="update_row">
       <div class="update_content">
         <div class="update_item">
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>

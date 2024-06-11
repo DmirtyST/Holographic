@@ -1,8 +1,16 @@
 <template>
-  <div class="screen">
+  <section class="screen">
     <UiVideo>
-      <source class="screen_video" v-if="isTablet" src="@/assets/screenVideo.mp4" />
-      <source class="screen_video" v-if="isMobile" src="@/assets/screenVideoSm.mp4" />
+      <source
+        class="screen_video"
+        v-if="isTablet"
+        src="https://cdn.pixabay.com/video/2022/04/09/113366-697718059_large.mp4"
+      />
+      <source
+        class="screen_video"
+        v-if="isMobile"
+        src="https://cdn.pixabay.com/video/2022/04/09/113366-697718059_large.mp4"
+      />
     </UiVideo>
 
     <div class="screen_row">
@@ -25,7 +33,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script setup>
   import VHtag from '@comps/UI/Htag/VHtag.vue';

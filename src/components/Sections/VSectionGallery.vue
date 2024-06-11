@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery">
+  <section class="gallery">
     <div class="gallery_row">
       <div class="gallery_title">
         <VHtag size="xl" tag="h3">PREVIEW OF 80 IMAGES</VHtag>
@@ -73,12 +73,11 @@
         </template>
       </VTabs>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
   import VTabs from '@comps/UI/Tabs/VTabs.vue';
-  import {ref} from 'vue';
   import VContainer from '@comps/UI/Container/VContainer.vue';
   import gallery1 from '@/assets/gallery1.png';
   import gallery2 from '@/assets/gallery2.png';
@@ -139,22 +138,6 @@
     {id: 3, label: 'Holographic', value: 'gallery3'},
     {id: 4, label: 'Glass', value: 'gallery4'},
   ];
-  let tween;
-  const item = ref(null);
-  console.log(item);
-  const createTween = () => {
-    tween && tween.kill();
-    tween = gsap.fromTo(
-      item.value,
-      {opacity: 0},
-      {paused: true, opacity: 0, duration: 3},
-    );
-  };
-  function toggleRect() {
-    tween.reversed() ? tween.play() : tween.reverse();
-    console.log('he');
-  }
-  onMounted(createTween);
 </script>
 
 <style lang="scss" scoped>

@@ -1,5 +1,5 @@
 <template>
-  <div id="abs" class="abstractions">
+  <section id="abs" class="abstractions">
     <div class="abstractions_row">
       <div class="abstractions_content">
         <div class="abstractions_substrate"></div>
@@ -25,7 +25,7 @@
         <li class="abstractions_list">Glass</li>
       </ul>
     </nav>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -95,7 +95,7 @@
         },
       });
       tl.to('.abstractions_item', {
-        duration: 1,
+        duration: 0.7,
         bottom: '48rem',
       });
       tl.to('.abstractions_title', {

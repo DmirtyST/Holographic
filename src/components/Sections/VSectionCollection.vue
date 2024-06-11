@@ -1,5 +1,5 @@
 <template>
-  <div class="collection">
+  <section class="collection">
     <div class="collection_top">
       <div class="collection_title">
         <VHtag size="xxl" tag="h2">20 different Shapes</VHtag>
@@ -68,7 +68,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>

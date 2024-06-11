@@ -1,5 +1,5 @@
 <template>
-  <div class="price">
+  <section class="price">
     <div class="price_row">
       <div class="price_content">
         <div class="price_item">
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>
@@ -40,9 +40,9 @@
     mm.add('(min-width:568px)', () => {
       gsap.fromTo(
         '.price_img',
-        {opacity: 0, scale: 0.5, rotateZ: '-29deg', rotateY: '-70deg', rotateX: '30deg'},
+        {opacity: 0, scale: 1, rotateZ: '-29deg', rotateY: '-20deg', rotateX: '40deg'},
         {
-          scale: 1,
+          scale: 0.9,
           opacity: 1,
           duration: 1.1,
           rotateZ: '0deg',
@@ -51,7 +51,7 @@
           scrollTrigger: {
             trigger: '.price_row',
             toggleActions: 'restart none none reverse',
-            start: 'top 20%',
+            start: 'top center',
           },
         },
       );

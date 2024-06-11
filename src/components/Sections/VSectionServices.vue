@@ -1,5 +1,5 @@
 <template>
-  <div class="services">
+  <section class="services">
     <VContainer width="120rem">
       <div class="services_row">
         <div class="services_item">
@@ -18,7 +18,7 @@
         </div>
       </div>
     </VContainer>
-  </div>
+  </section>
 </template>
 
 <script setup>
