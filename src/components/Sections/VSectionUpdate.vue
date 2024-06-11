@@ -60,7 +60,7 @@
   import updateBox from '@/assets/updateBox.png';
   import updateRightWebp from '@/assets/updateright.webp';
   import updateLeftWebp from '@/assets/updateleft.webp';
-  import updateBoxWebp from '@/assets/updateBox.webp';
+  import updateBoxWebp from '@/assets/updatebox.webp';
   import {gsap} from 'gsap';
   import ScrollTrigger from 'gsap/ScrollTrigger';
   import {onMounted} from 'vue';
